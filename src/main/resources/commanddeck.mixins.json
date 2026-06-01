@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "xyz.redking.commanddeck.mixins",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+      "KeyBindingMixin",
+      "MinecraftClientTickMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
