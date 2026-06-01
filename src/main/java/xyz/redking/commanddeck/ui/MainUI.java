@@ -509,7 +509,7 @@ public class MainUI extends Screen {
     private void renderBreadcrumbs(GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY) {
         int y = menuY + 8;
         if (navigationStack.isEmpty()) {
-            Component label = Component.literal("CommandDeck");
+            Component label = Component.literal("CommanDeck");
             guiGraphics.text(font, label, menuX + (menuWidth - font.width(label)) / 2, y, 0xFFFFFFFF, true);
             return;
         }

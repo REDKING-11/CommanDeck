@@ -1,5 +1,5 @@
 {
-  "menu.main.title": "CommandDeck",
+  "menu.main.title": "CommanDeck",
   "menu.main.no_actions": "No actions created.",
 
   "menu.action_picker.title": "Select Action Type",
@@ -13,7 +13,7 @@
   "menu.editor.property.icon": "Icon",
   "menu.editor.property.keybind": "Keybind",
 
-  "text.config.commanddeck.title": "CommandDeck Config",
+  "text.config.commanddeck.title": "CommanDeck Config",
   "text.config.commanddeck.option.buttonsPerRow": "Buttons per Row",
   "text.config.commanddeck.option.visibleRows": "Visible Rows",
   "text.config.commanddeck.option.closeOnAction": "Close on Action",

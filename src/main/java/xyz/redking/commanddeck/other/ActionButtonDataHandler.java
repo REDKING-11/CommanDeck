@@ -3,9 +3,9 @@ package xyz.redking.commanddeck.other;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import net.fabricmc.loader.api.FabricLoader;
 import xyz.redking.commanddeck.data.ActionButtonData;
 import xyz.redking.commanddeck.data.ActionButtonDataJson;
+import xyz.redking.commanddeck.platform.Platform;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -25,7 +25,7 @@ public final class ActionButtonDataHandler {
     }
 
     private static File configFile() {
-        return FabricLoader.getInstance().getConfigDir().resolve("commanddeck_data.json").toFile();
+        return Platform.getConfigDir().resolve("commanddeck_data.json").toFile();
     }
 
     public static void initialize() {

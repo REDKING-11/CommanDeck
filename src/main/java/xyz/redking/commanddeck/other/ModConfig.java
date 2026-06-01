@@ -2,7 +2,7 @@ package xyz.redking.commanddeck.other;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.fabricmc.loader.api.FabricLoader;
+import xyz.redking.commanddeck.platform.Platform;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class ModConfig {
     public String deleteModifier = "key.keyboard.left.shift";
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final File CONFIG_FILE = FabricLoader.getInstance().getConfigDir().resolve("commanddeck.json").toFile();
+    private static final File CONFIG_FILE = Platform.getConfigDir().resolve("commanddeck.json").toFile();
 
     public static ModConfig createAndLoad() {
         if (!CONFIG_FILE.exists()) {

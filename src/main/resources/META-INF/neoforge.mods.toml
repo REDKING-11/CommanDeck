@@ -1,0 +1,29 @@
+modLoader = "javafml"
+loaderVersion = "[3,]"
+license = "GPL-3.0"
+
+[[mods]]
+modId = "commanddeck"
+version = "${version}"
+displayName = "CommanDeck"
+authors = "REDKING"
+description = '''
+A lightweight configurable in-game action deck for commands, keybinds, chat messages, and action chains.
+'''
+
+[[mixins]]
+config = "commanddeck.mixins.json"
+
+[[dependencies.commanddeck]]
+modId = "neoforge"
+type = "required"
+versionRange = "[26.1.2,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.commanddeck]]
+modId = "minecraft"
+type = "required"
+versionRange = "[26.1.2]"
+ordering = "NONE"
+side = "CLIENT"

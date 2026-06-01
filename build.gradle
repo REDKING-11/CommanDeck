@@ -19,6 +19,9 @@ repositories {
 
 	// Optional Mod Menu integration
 	maven { url 'https://maven.terraformersmc.com/' }
+
+	// Experimental NeoForge universal-jar metadata/entrypoint compile support
+	maven { url 'https://maven.neoforged.net/releases' }
 }
 
 dependencies {
@@ -28,12 +31,17 @@ dependencies {
 
 	// Optional Mod Menu support. Not required at runtime.
 	compileOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
+
+	// NeoForge entrypoint annotation only. Not bundled and not required on Fabric.
+	compileOnly("net.neoforged.fancymodloader:loader:${project.fancymodloader_version}") {
+		transitive = false
+	}
 }
 
 processResources {
 	inputs.property "version", project.version
 
-	filesMatching("fabric.mod.json") {
+	filesMatching(["fabric.mod.json", "META-INF/neoforge.mods.toml"]) {
 		expand "version": project.version
 	}
 }

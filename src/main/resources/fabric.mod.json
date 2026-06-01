@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "commanddeck",
 	"version": "${version}",
-	"name": "CommandDeck",
+	"name": "CommanDeck",
 	"description": "A modernized, lightweight configurable menu for commands and keybindings. Rebuilt for performance and stability.",
 	"authors": [
 		{
@@ -14,7 +14,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"main": [
-          "xyz.redking.commanddeck.CommandDeck"
+          "xyz.redking.commanddeck.platform.fabric.FabricEntrypoint"
 		],
 		"modmenu": [
 		  "xyz.redking.commanddeck.other.ModMenuIntegration"
