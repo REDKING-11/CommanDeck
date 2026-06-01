@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "commanddeck",
+	"version": "${version}",
+	"name": "CommandDeck",
+	"description": "A modernized, lightweight configurable menu for commands and keybindings. Rebuilt for performance and stability.",
+	"authors": [
+		{
+			"name": "REDKING"
+		}
+	],
+	"license": "GPL-3.0",
+	"icon": "assets/commanddeck/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+          "xyz.redking.commanddeck.CommandDeck"
+		],
+		"modmenu": [
+		  "xyz.redking.commanddeck.other.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"commanddeck.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "26.1.2",
+		"java": ">=25"
+	}
+}
