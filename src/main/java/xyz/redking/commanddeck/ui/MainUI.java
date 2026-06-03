@@ -50,7 +50,7 @@ public class MainUI extends Screen {
     }
 
     public MainUI(boolean preserveInitialNavigation) {
-        super(Component.translatable("menu.main.title"));
+        super(Component.literal("CommanDeck"));
         this.preserveInitialNavigation = preserveInitialNavigation;
     }
 
@@ -430,7 +430,7 @@ public class MainUI extends Screen {
             }
         }
         if (actions.isEmpty()) {
-            Component emptyMsg = Component.translatable("menu.main.no_actions");
+            Component emptyMsg = Component.literal("No actions created.");
             guiGraphics.text(font, emptyMsg, menuX + (menuWidth - font.width(emptyMsg)) / 2, menuY + (menuHeight / 2), 0x66FFFFFF, false);
         }
 

@@ -34,11 +34,14 @@ public class ActionEditorUI extends Screen {
     private final List<Integer> keybind = new ArrayList<>();
     private int menuX;
     private int menuY;
-    private final int menuWidth = 260;
+    private final int menuWidth = 300;
     private final int menuHeight = 180;
+    private final int labelXOffset = 10;
+    private final int inputXOffset = 125;
+    private final int inputWidth = 160;
 
     public ActionEditorUI(ActionButtonData originalAction) {
-        super(Component.translatable("menu.editor.title"));
+        super(Component.literal("Action Editor"));
         this.originalAction = originalAction;
         if (originalAction != null) {
             actionButtonData = originalAction.copy();
@@ -53,7 +56,7 @@ public class ActionEditorUI extends Screen {
         menuX = (width - menuWidth) / 2;
         menuY = (height - (menuHeight + 40)) / 2;
 
-        nameEditBox = new EditBox(font, menuX + 100, menuY + 40, 140, 20, Component.empty());
+        nameEditBox = new EditBox(font, inputX(), menuY + 40, inputWidth, 20, Component.empty());
         nameEditBox.setValue(actionButtonData.name);
         addRenderableWidget(nameEditBox);
 
@@ -70,11 +73,11 @@ public class ActionEditorUI extends Screen {
             };
             minecraft.setScreen(itemPicker);
         });
-        iconButton.setX(menuX + 100);
+        iconButton.setX(inputX());
         iconButton.setY(menuY + 68);
         addRenderableWidget(iconButton);
 
-        customModelDataEditBox = new EditBox(font, menuX + 100, menuY + 98, 140, 20, Component.empty());
+        customModelDataEditBox = new EditBox(font, inputX(), menuY + 98, inputWidth, 20, Component.empty());
         customModelDataEditBox.setValue(getCustomModelData(actionButtonData.icon));
         customModelDataEditBox.setResponder(value -> updateCustomModelData());
         addRenderableWidget(customModelDataEditBox);
@@ -84,14 +87,14 @@ public class ActionEditorUI extends Screen {
                     settingKeybind = true;
                     updateKeybindLabel();
                 })
-                .pos(menuX + 100, menuY + 123)
-                .size(140, 20)
+                .pos(inputX(), menuY + 123)
+                .size(inputWidth, 20)
                 .build();
         addRenderableWidget(keybindBtn);
         updateKeybindLabel();
 
         addRenderableWidget(Checkbox.builder(Component.literal("Folder"), font)
-                .pos(menuX + 10, menuY + 152)
+                .pos(labelX(), menuY + 152)
                 .selected(actionButtonData.isFolder)
                 .onValueChange((checkbox, value) -> toggleFolderMode(value))
                 .build());
@@ -103,20 +106,28 @@ public class ActionEditorUI extends Screen {
                         listEditor.previousScreen = this;
                         minecraft.setScreen(listEditor);
                     })
-                    .pos(menuX + 100, menuY + 150)
-                    .size(140, 20)
+                    .pos(inputX(), menuY + 150)
+                    .size(inputWidth, 20)
                     .build());
         }
 
         int footerY = menuY + menuHeight + 5;
-        addRenderableWidget(Button.builder(Component.translatable("menu.editor.button.finish"), button -> saveAndClose())
-                .pos(menuX + 40, footerY)
+        addRenderableWidget(Button.builder(Component.literal("Finish"), button -> saveAndClose())
+                .pos(menuX + 65, footerY)
                 .size(80, 20)
                 .build());
-        addRenderableWidget(Button.builder(Component.translatable("menu.editor.button.cancel"), button -> onClose())
-                .pos(menuX + 140, footerY)
+        addRenderableWidget(Button.builder(Component.literal("Cancel"), button -> onClose())
+                .pos(menuX + 155, footerY)
                 .size(80, 20)
                 .build());
+    }
+
+    private int labelX() {
+        return menuX + labelXOffset;
+    }
+
+    private int inputX() {
+        return menuX + inputXOffset;
     }
 
     private void toggleFolderMode(boolean isFolder) {
@@ -279,13 +290,13 @@ public class ActionEditorUI extends Screen {
         renderBorder(guiGraphics);
         guiGraphics.fill(menuX + 5, menuY + 5, menuX + menuWidth - 5, menuY + 29, 0xDD141414);
         guiGraphics.text(font, title, menuX + (menuWidth - font.width(title)) / 2, menuY + 12, -1, true);
-        guiGraphics.fill(menuX + 10, menuY + 66, menuX + 82, menuY + 67, 0x66FFFFFF);
-        guiGraphics.fill(menuX + 10, menuY + 148, menuX + 82, menuY + 149, 0x66FFFFFF);
+        guiGraphics.fill(labelX(), menuY + 66, inputX() - 10, menuY + 67, 0x66FFFFFF);
+        guiGraphics.fill(labelX(), menuY + 148, inputX() - 10, menuY + 149, 0x66FFFFFF);
         super.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
-        guiGraphics.text(font, Component.translatable("menu.editor.property.name"), menuX + 10, menuY + 45, 0xFFFFFFFF, true);
-        guiGraphics.text(font, Component.translatable("menu.editor.property.icon"), menuX + 10, menuY + 73, 0xFFFFFFFF, true);
-        guiGraphics.text(font, "CustomModelData", menuX + 10, menuY + 103, 0xFFFFFFFF, true);
-        guiGraphics.text(font, Component.translatable("menu.editor.property.keybind"), menuX + 10, menuY + 128, 0xFFFFFFFF, true);
+        guiGraphics.text(font, Component.literal("Name"), labelX(), menuY + 45, 0xFFFFFFFF, true);
+        guiGraphics.text(font, Component.literal("Icon"), labelX(), menuY + 73, 0xFFFFFFFF, true);
+        guiGraphics.text(font, Component.literal("CustomModelData"), labelX(), menuY + 103, 0xFFFFFFFF, true);
+        guiGraphics.text(font, Component.literal("Keybind"), labelX(), menuY + 128, 0xFFFFFFFF, true);
     }
 
     private void renderBorder(GuiGraphicsExtractor guiGraphics) {
