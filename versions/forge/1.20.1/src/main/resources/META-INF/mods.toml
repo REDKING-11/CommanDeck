@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "GPL-3.0"
+
+[[mods]]
+modId = "commanddeck"
+version = "${version}"
+displayName = "CommanDeck"
+authors = "REDKING"
+displayTest = "IGNORE_SERVER_VERSION"
+description = '''
+A lightweight configurable in-game action deck for commands, keybinds, chat messages, and action chains.
+'''
+
+[[dependencies.commanddeck]]
+modId = "forge"
+mandatory = true
+versionRange = "[${forge_version},)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.commanddeck]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[${minecraft_version},1.20.2)"
+ordering = "NONE"
+side = "CLIENT"

@@ -6,6 +6,19 @@ It was inspired by **QuickMenu** and **QuickMenu Renewed**, then rebuilt and por
 
 Version **1.1** adds experimental multi-loader support for **Fabric** and **NeoForge**. Quilt does not currently target this Minecraft version, but the jar is structured to stay Quilt-compatible if/when Quilt support catches up.
 
+## Version Layout
+
+The root project remains the current CommanDeck build. It currently builds the Fabric-targeted jar and carries the experimental NeoForge metadata/entrypoint for the same current Minecraft version.
+
+Requested loader or older-Minecraft ports live under `versions/`:
+
+* `versions/fabric/` documents the Fabric build line.
+* `versions/neoforge/` documents the NeoForge build line.
+* `versions/forge/1.20.1/` contains the standalone Forge 1.20.1 requested port.
+* `versions/quilt/` is reserved for a separate Quilt build if Quilt ever needs behavior beyond Fabric-compatible metadata.
+
+Shared behavior, save-format notes, and cross-loader porting rules live under `common/`.
+
 ## Why CommanDeck?
 
 CommanDeck is meant to be a cleaner, modern continuation of the idea with fewer required dependencies and better support for current Minecraft versions.

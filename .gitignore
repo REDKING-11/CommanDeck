@@ -40,4 +40,9 @@ replay_*.log
 *.hprof
 *.jfr
 
+# packaged upload artifacts
+
+outputs/*.jar
+outputs/*.zip
+
 .kotlin/
